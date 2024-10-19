@@ -85,7 +85,10 @@ async function createConfig(config: Config) {
    * The function constructs a prompt using the strings and values provided and sends this prompt to the AI provider.
    * Depending on the configuration, it sends the prompt to OpenAI or Ollama and returns the generated response.
    */
-  return async function (strings: TemplateStringsArray, ...values: any[]) {
+  return async function (
+    strings: TemplateStringsArray,
+    ...values: any[]
+  ): Promise<any> {
     let prompt = "";
 
     strings.forEach((string, index) => {
