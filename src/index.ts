@@ -74,7 +74,7 @@ async function generateFromOllama(prompt: string, config: Config) {
  *   return <Button>Click me</Button>;
  * }
  */
-async function createConfig(config: Config) {
+function createConfig(config: Config) {
   /**
    * This function acts as a tagged template literal processor that generates text based on the constructed prompt.
    *
@@ -98,13 +98,17 @@ async function createConfig(config: Config) {
       }
     });
 
+    let generatedContent;
+
     if (config.provider === "openai") {
-      return await generateFromOpenAI(prompt, config);
+      generatedContent = await generateFromOpenAI(prompt, config);
     } else if (config.provider === "ollama") {
-      return await generateFromOllama(prompt, config);
+      generatedContent = await generateFromOllama(prompt, config);
+    } else {
+      throw new Error("Unsupported provider");
     }
 
-    throw new Error("Unsupported provider");
+    return generatedContent;
   };
 }
 
