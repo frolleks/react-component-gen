@@ -64,9 +64,12 @@ async function generateFromOllama(prompt: string, config: Config) {
  * and returns the generated AI response.
  *
  * @example
+ * import createConfig from "react-component-gen";
+ *
  * const config = { provider: "openai", model: "gpt-4o" };
  * const ai = await createConfig(config);
  * const Button = await ai`Create a react component of a button`;
+ *
  * function ExampleButton() {
  *   return <Button>Click me</Button>;
  * }
